@@ -1,0 +1,313 @@
+:root {
+    --bg: #0b0d10;            /* Rich Obsidian Black canvas */
+    --card-bg: #14181f;       /* Deep Charcoal for structural contrast */
+    --card-hover: #1b212a;    /* Lighter charcoal for crisp interactive states */
+    --text: #ffffff;          /* Pure White for maximum readability */
+    --text-muted: #8b99ae;    /* Steel Blue/Gray for subheadings and details */
+    --border: #222933;        /* Subtle sleek border line */
+    
+    /* Neon Cyber-Midori Accent */
+    --accent: #00ff87;        
+    --accent-glow: rgba(0, 255, 135, 0.15);
+    
+    --card-radius: 24px;      /* Ultra-modern rounded framing */
+    --btn-radius: 12px;
+    --line-weight: 1.5px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    padding: 5rem 2rem;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header Architecture */
+header {
+    max-width: 1200px;
+    margin: 0 auto 5rem auto;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.5rem;
+}
+
+header h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, var(--text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header .bio {
+    font-size: 1.25rem;
+    max-width: 700px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.links-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.profile-link {
+    color: #585aee;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: color 0.2s ease;
+}
+
+.profile-link:hover {
+    color: var(--accent);
+}
+
+/* Portfolio Grid */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 3rem;
+}
+
+/* Project Selection Cards */
+.card {
+    background: var(--card-bg);
+    border: var(--line-weight) solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 2.25rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+.card:hover {
+    background-color: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--accent-glow);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background-color: var(--bg);
+    border: var(--line-weight) solid var(--border);
+    border-radius: calc(var(--card-radius) - 8px);
+    margin-bottom: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.card h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+}
+
+.card p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* Immersive Frosted Dark Overlay Screen */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 13, 16, 0.7); 
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 4rem 2rem; 
+}
+
+/* Overlay Central Card */
+.overlay-content {
+    max-width: 850px;
+    margin: 0 auto;
+    border: var(--line-weight) solid var(--border);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    padding: 4rem;
+    position: relative;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+    animation: premiumPopUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes premiumPopUp {
+    from { transform: scale(0.96) translateY(30px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* System Action Buttons */
+.close-btn {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--line-weight) solid var(--border);
+    border-radius: var(--btn-radius);
+    padding: 0.6rem 1.4rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background: #ffffff;
+    color: var(--bg);
+    border-color: #ffffff;
+}
+
+.store-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--btn-radius);
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+}
+
+.store-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--accent-glow);
+    filter: brightness(1.1);
+}
+
+/* Aspect-Ratio Maintained Fluid Video Streaming */
+.detail-media {
+    margin: 2.5rem 0;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 cinematic aspect box ratio */
+    height: 0;
+    overflow: hidden;
+    border: var(--line-weight) solid var(--border);
+    border-radius: calc(var(--card-radius) - 6px);
+    background: var(--bg);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.detail-title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    border-bottom: var(--line-weight) solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.detail-desc {
+    font-size: 1.15rem;
+    white-space: pre-line;
+    color: #cbd5e1;
+    max-width: 750px;
+}
+
+/* Layout Compactor */
+@media (max-width: 600px) {
+    body {
+        padding: 3rem 1rem;
+    }
+    header {
+        margin-bottom: 3.5rem;
+    }
+    header h1 {
+        font-size: 2.8rem;
+    }
+    .links-container {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .overlay {
+        padding: 1.5rem 1rem;
+    }
+    .overlay-content {
+        padding: 3rem 1.5rem;
+    }
+    .detail-title {
+        font-size: 2.2rem;
+    }
+    .close-btn {
+        position: static;
+        margin-bottom: 2.5rem;
+        display: inline-block;
+    }
+}

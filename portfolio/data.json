@@ -1,0 +1,85 @@
+{
+  "profile": {
+    "name": "Mahmoud Saber",
+    "bio": "Senior Game Developer with over 10 years of experience specializing in cross-platform systems, data-driven architecture, custom physics, and robust multiplayer infrastructure across Mobile, PC, and VR.",
+    "links": [
+      { "name": "LinkedIn", "url": "https://www.linkedin.com/in/mahmoud-saber-738118114" },
+      { "name": "itch.io", "url": "https://mahmoudsaberamin.itch.io/" },
+      { "name": "Email", "url": "mailto:mahmoud.saber.amin@gmail.com" }
+    ]
+  },
+  "projects": [
+    {
+      "title": "Monsters' Gambits",
+      "shortDescription": "PC tactical card game featuring infinite strategies on procedural chess fields, published on Steam.",
+      "longDescription": "Built a scalable data-driven monster fusion matrix handling complex combinations for over 300 unique creatures. Engineered turn-based strategy mechanics over randomized chess-board fields with custom grid pathfinding, automated trap triggers, and dynamic combat ability stack evaluation pipelines.",
+      "gridImage": "imgs/mg_web_1.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=I2-wN2k3no0",
+      "storeUrl": "https://store.steampowered.com/app/2365060/Monsters_Gambits/"
+    },
+    {
+      "title": "Team Up VR",
+      "shortDescription": "Immersive multiplayer VR deathmatch arena game deployed on Steam.",
+      "longDescription": "Designed performance-critical VR interaction systems for custom physics weaponry, realistic object manipulation, and head/hand spatial tracking. Optimized asynchronous network state replication and GPU frame-timing barriers to ensure clean, high-framerate multiplayer performance avoiding simulation sickness.",
+      "gridImage": "imgs/tu_web_1.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=eqhYOv9vNbw",
+      "storeUrl": "https://store.steampowered.com/app/916390/Team_Up_VR_Beta/"
+    },
+    {
+      "title": "Megatronics",
+      "shortDescription": "2D action-platformer fighting game showcasing complex multi-state transformation physics engines.",
+      "longDescription": "Programmed clean, highly responsive 2D physics controllers managing immediate state transformations between free aerial flight mechanics and heavy grounded combat vehicles. Engineered custom collision matrices, complex layer filtering, frame-perfect fighting input execution queues, and hierarchical enemy AI behavior trees.",
+      "gridImage": "imgs/mega_web_1.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=bi7o990ysvE",
+      "storeUrl": ""
+    },
+    {
+      "title": "Basra",
+      "shortDescription": "Cross-platform mobile card game featuring seamless multiplayer networking and deterministic smart AI bots.",
+      "longDescription": "Implemented lightweight asynchronous online multiplayer matchmaking alongside a zero-latency local area network (LAN) mode. Engineered deterministic smart bot behavior routines managing card-counting probability metrics. Optimized UI rendering configurations for frame-rate stable interaction states, responsive touch handling, and smooth physical card layouts.",
+      "gridImage": "imgs/basra_web_1.jpg",
+      "videoUrl": "https://www.youtube.com/shorts/tCN4ogBTRY4",
+      "storeUrl": "https://joybeatgames.itch.io/basra"
+    },
+    {
+      "title": "Trix",
+      "shortDescription": "High-traffic competitive online card game optimized for stable real-time mobile scaling.",
+      "longDescription": "Built robust real-time network synchronization layouts configured to maintain tight structural sync under fluctuating or high-latency mobile connectivity environments. Engineered efficient game loop state validation structures to scale reliably across broad regional concurrency workloads.",
+      "gridImage": "imgs/trix_web_1.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=X--kUnY4E30",
+      "storeUrl": ""
+    },
+    {
+      "title": "Baloot Next Gen",
+      "shortDescription": "Online 3D multiplayer card game built for high-performance mobile devices.",
+      "longDescription": "Engineered the interactive mobile rendering presentation workflow alongside automated visual card layouts within a 3D environment canvas. Managed server-authoritative logic state synchronization frameworks to achieve high-fidelity rendering efficiency alongside network threat verification protocols.",
+      "gridImage": "imgs/baloot_web_1.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=1-yrK_NEXgA",
+      "storeUrl": ""
+    },
+    {
+      "title": "The Micro Business Game",
+      "shortDescription": "Complex economic simulation built for institutional enterprise mobile deployment with the Sparkassenstiftung.",
+      "longDescription": "Programmed an intricate, deterministic mathematical engine regulating resource tracking, accounting matrices, supply-chain logistics, and dynamic macro-economic conditions. Maintained structural codebase encapsulation matching complex educational simulation criteria across production builds.",
+      "gridImage": "imgs/mbg_web_1.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=NepzIoike_E",
+      "storeUrl": "https://play.google.com/store/apps/details?id=com.sparkasse.thebusinessgame"
+    },
+    {
+      "title": "The Savings Game",
+      "shortDescription": "Data-driven budgeting and financial tracking simulation running across multi-decade runtime metrics.",
+      "longDescription": "Engineered multi-layered calculation structures simulating 36 years of financial modeling, macro budgeting, structural asset changes, and enterprise business scaling loops. Optimized lightweight data storage and serialization structures matching targeted global distribution profiles.",
+      "gridImage": "imgs/savings_web_1.jpg",
+      "videoUrl": "",
+      "storeUrl": "https://play.google.com/store/apps/details?id=de.sparkasse.savingsgame"
+    },
+    {
+      "title": "Historica",
+      "shortDescription": "Educational tablet-optimized sandbox battle simulator featuring dynamic parameter timelines.",
+      "longDescription": "Developed an advanced simulation sandbox system enabling users to modify tactical landscape variables, reconstruct historical deployment layouts from scratch, and compute changing consequence tracks across a scalable, multithreaded simulation unit timeline.",
+      "gridImage": "imgs/historica_web_1.jpg",
+      "videoUrl": "https://www.youtube.com/watch?v=rMYvyc-8gjM",
+      "storeUrl": ""
+    }
+  ]
+}

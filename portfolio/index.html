@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="portfolio-title">Loading Profile</h1>
+        <p class="bio" id="portfolio-bio"></p>
+        <div class="links-container" id="portfolio-links"></div>
+    </header>
+
+    <main>
+        <div class="grid" id="project-grid"></div>
+    </main>
+
+    <div class="overlay" id="detail-overlay">
+        <div class="overlay-content">
+            <button class="close-btn" id="close-overlay">Close</button>
+            <h2 class="detail-title" id="detail-title">Project Title</h2>
+            <div class="detail-media" id="detail-media"></div>
+            <p class="detail-desc" id="detail-desc"></p>
+            <a class="store-btn" id="detail-store" href="#" target="_blank">Open Store Link</a>
+        </div>
+    </div>
+
+    <script>
+        let projectsData = [];
+
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('portfolio-title').textContent = data.profile.name;
+                document.getElementById('portfolio-bio').textContent = data.profile.bio;
+                
+                // Render links
+                const linksContainer = document.getElementById('portfolio-links');
+                linksContainer.innerHTML = '';
+                data.profile.links.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.target = '_blank';
+                    a.className = 'profile-link';
+                    a.textContent = link.name;
+                    linksContainer.appendChild(a);
+                });
+
+                projectsData = data.projects;
+                renderGrid(projectsData);
+            })
+            .catch(error => console.error('Error fetching data configuration:', error));
+
+        function renderGrid(projects) {
+            const grid = document.getElementById('project-grid');
+            grid.innerHTML = '';
+
+            projects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => openDetails(index);
+
+                const imgHTML = project.gridImage 
+                    ? `<img class="card-img-placeholder" src="${project.gridImage}" alt="${project.title}">`
+                    : `<div class="card-img-placeholder">[ ${project.title} ]</div>`;
+
+                card.innerHTML = `
+                    ${imgHTML}
+                    <h2>${project.title}</h2>
+                    <p>${project.shortDescription}</p>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function parseYoutube(url) {
+            if (!url) return null;
+            let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
+            let match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
+        }
+
+        function openDetails(index) {
+            const project = projectsData[index];
+            document.getElementById('detail-title').textContent = project.title;
+            document.getElementById('detail-desc').textContent = project.longDescription;
+
+            const mediaContainer = document.getElementById('detail-media');
+            mediaContainer.innerHTML = '';
+
+            // Handle YouTube integration dynamically using iframe overlays
+            const ytId = parseYoutube(project.videoUrl);
+            if (ytId) {
+                const videoWrapper = document.createElement('div');
+                videoWrapper.className = 'video-wrapper';
+                videoWrapper.innerHTML = `
+                    <iframe src="https://www.youtube.com/embed/${ytId}" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                `;
+                mediaContainer.appendChild(videoWrapper);
+            }
+
+            // Handle store link injection states
+            const storeBtn = document.getElementById('detail-store');
+            if (project.storeUrl) {
+                storeBtn.href = project.storeUrl;
+                storeBtn.style.display = 'inline-block';
+            } else {
+                storeBtn.style.display = 'none';
+            }
+
+            document.getElementById('detail-overlay').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.getElementById('close-overlay').onclick = () => {
+            document.getElementById('detail-overlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('detail-media').innerHTML = ''; // Stop video playback
+        };
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('detail-overlay').style.display = 'none';
+                document.body.style.overflow = 'auto';
+                document.getElementById('detail-media').innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
